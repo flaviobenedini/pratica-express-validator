@@ -7,13 +7,20 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <% if (locals.erros) { %>
+      <ul>
+        <% for (let erro of erros) { %>
+          <li><%= erro.param %>: <%= erro.msg %></li>
+        <% } %>
+      </ul>
+    <% } %>
     <form action="/" method="post">
       <label for="nome">Nome: </label>
-      <input type="text" name="nome" id="nome">
+      <input type="text" name="nome" id="nome" value="<%= locals.valoresAntigos && valoresAntigos.nome %>">
       <label for="email">E-Mail: </label>
-      <input type="text" name="email" id="email">
+      <input type="text" name="email" id="email" value="<%= locals.valoresAntigos && valoresAntigos.email %>">
       <label for="senha">Senha: </label>
-      <input type="password" name="senha" id="senha">
+      <input type="password" name="senha" id="senha" value="<%= locals.valoresAntigos && valoresAntigos.senha %>">
       <input type="submit" value="Enviar">
     </form>
   </body>
